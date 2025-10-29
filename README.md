@@ -5,6 +5,13 @@ Travail personnel sur le projet industriel
 uv init
 uv venv
 source .venv/bin/activate
+uv add fastapi
+uv add requests
+uv add uvicorn
+uv add "mcp[cli]" 
+uv add httpx
+uv add anthropic
+
 
 # https://portal.aixigo.com/docs/analytics-api#sampledata
 L’Analytics API est une API REST conçue pour l’analyse rapide et fiable de produits financiers et de portefeuilles, en utilisant des données de marché actuelles et historiques.
@@ -34,7 +41,19 @@ script get_token.py prêt mais il me manque mes identifiants sandbox (client ID 
 # Du coup on va récupérer la forme des données envoyées quand ça marche (toutes accessibles ici):
 https://portal.aixigo.com/docs/analytics-api#
     et ensuite, on crée un serveur simulé (mock)
+        il simule les vraies API Aixigo (ex : /portfolio/contracts, /portfolio/transactions, etc.)
         pour chaque endpoint, on les met en forme selon les exemples du site
         python -m uvicorn usecase1_mockserver:app --reload --port 8000
-    ainsi qu'un client correspondant
+    ainsi qu'un client correspondant (REST sans MCP)
         uv run client.py
+
+# Amélioration avec serveur MCP:
+    rajout de usecase1_mcpserver.py (il expose des outils MCP (list_contracts, get_transactions, etc.) qui, eux, appellent les endpoints REST du mock.)
+    rajout de mcp_client.py (attention la clé Anthopic dans .env n'est pas valide donc ne fonctionne pas)
+
+
+# Séquence pour que ça fonctionne:
+uvicorn usecase1_mockserver:app --port 8000
+uv run usecase1_mcpserver.py
+uv run mcp_client.py usecase1_mcpserver.py
+    
