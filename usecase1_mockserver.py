@@ -180,7 +180,6 @@ async def get_contracts():
     return JSONResponse(contracts)
 
 
-
 # identifiants par contrat (conforme à la doc Aixigo)
 @app.get("/portfolio/persons-of-contract/{contractId}")
 async def get_persons_of_contract(contractId: str):
