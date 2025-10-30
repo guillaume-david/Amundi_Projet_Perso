@@ -60,9 +60,66 @@ https://portal.aixigo.com/docs/analytics-api#
     rajout de usecase1_mcpserver.py (il expose des outils MCP (list_contracts, get_transactions, etc.) qui, eux, appellent les endpoints REST du mock.)
     rajout de mcp_client.py (attention la clé Anthopic dans .env n'est pas valide donc ne fonctionne pas)
 
-
 # Séquence pour que ça fonctionne:
 uvicorn usecase1_mockserver:app --port 8000
 uv run usecase1_mcpserver.py
 uv run mcp_client.py usecase1_mcpserver.py
-    
+
+# Liste des endpoints de AnalyticsAPI : https://portal.aixigo.com/docs/analytics-api
+/asset - liste les endpoints qui appartiennenent à asset
+    /asset - toutes les données de référence et de marché pertinentes
+        asset=850403&when=YYYY-MM-DD
+    /quotes - toutes les données de marché pour un asset à une date précise
+        asset=850403&when=YYYY-MM-DD
+    /exchange-rates
+        sourceCurrency=EUR&targetCurrency=CHF&when=2025-01-01
+    /benchmark-performance
+        begin=2024-01-01&end=2025-01-01&benchmark=benchmark_INDEX_SP500"
+    /benchmarks - retourne la liste des benchmarks disponible
+    /benchmarks-quotes-series - performance journalière d'un benchmark entre deux dates
+        begin=2024-01-01&end=2025-01-01&benchmark=benchmark_INDEX_SP500
+    /benchmark-risk-characteristics - risque journalier d'un benchmark entre deux dates
+        begin=2024-01-01&end=2025-01-01&benchmark=benchmark_INDEX_SP500
+
+/portfolio - liste les endpoints qui appartiennenent à portfolio
+    /pending-orders - NOK
+    /assets-period - NOK
+    /assets-snapshot - NOK
+    /cash-flows - NOK
+    /contracts-of-person/{personId} - donne tous les contrats associés à une personne
+        /customer_001
+    /initial-values - NOK
+    /interest-data - NOK
+    /partial-holdings - NOK
+    /persons-of-contract/{contractId} - infos sur toutes les personnes associées à un contrat
+        /SamplePortfolio0001
+    /contracts - info sur un contrat donné
+        begin=2024-01-01&end=2025-01-01&contract=SamplePortfolio0001
+    /positions-period - NOK
+    /positions-snapshot - NOK
+    /transactions - NOK
+    /transaction-statistics - NOK
+    /transaction-series - NOK
+    /values - NOK
+    /value-series - NOK
+    /contract-sets/{contractSetId} - NOK
+    /contract-sets - NOK
+
+/portfolio-kpi - liste les endpoints qui appartiennenent à portfolio-kpi
+    NOK
+
+/report - liste les endpoints qui appartiennent à /report
+    NOK
+
+/data - liste les endpoints de /data
+    NOK
+
+/data-provisioning -
+    NOK
+
+/health/info - état de l'API
+/health/check - idem
+/license
+/version
+
+
