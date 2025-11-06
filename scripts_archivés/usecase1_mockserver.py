@@ -1,3 +1,8 @@
+""" Script inutile, il s'agissait de simuler un serveur AIXIGO
+l'objectif était de répondre au fait qu'on arrivait pas à requêter les endpoints de l'API analytics (il nous fallait un token)
+"""
+
+
 # mock_aixigo.py
 from fastapi import FastAPI
 from fastapi import Query

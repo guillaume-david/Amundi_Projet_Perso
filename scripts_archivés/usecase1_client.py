@@ -1,3 +1,8 @@
+"""
+Script qui fonctionnait en parallèle de usecase1_mockserver
+il interrogeait mockserver et nous renvoyait les données
+"""
+
 import requests
 from datetime import datetime
 

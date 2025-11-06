@@ -42,6 +42,7 @@ script get_token.py prêt mais il me manque mes identifiants sandbox (client ID 
 BASE_URL = "https://demo.portal.aixigo.cloud/analytics"
 TOKEN = "eyJhbGc... à récupérer dans les "CURL"
     Attention, un TOKEN différent pour les grandes familles de /endpoints
+    Attention, les TOKEN changent régulièrement
 
 HEADERS = {
     "accept": "application/hal+json",
@@ -77,7 +78,7 @@ uv run mcp_client.py usecase1_mcpserver.py
     /benchmark-performance
         begin=2024-01-01&end=2025-01-01&benchmark=benchmark_INDEX_SP500"
     /benchmarks - retourne la liste des benchmarks disponible
-    /benchmarks-quotes-series - performance journalière d'un benchmark entre deux dates
+    /benchmarks-quote-series - performance journalière d'un benchmark entre deux dates
         begin=2024-01-01&end=2025-01-01&benchmark=benchmark_INDEX_SP500
     /benchmark-risk-characteristics - risque journalier d'un benchmark entre deux dates
         begin=2024-01-01&end=2025-01-01&benchmark=benchmark_INDEX_SP500

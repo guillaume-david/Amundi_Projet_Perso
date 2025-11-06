@@ -1,4 +1,7 @@
-# Script qui permet de récupérer les authentifiants (sandbox) / mais a priori on n'y a pas accès.
+""" Script mort,
+il permettrait de récupérer le token pour accéder à la SANDBOX de AMUNDI
+mais il nous faudrait client_id et client_secret
+"""
 
 import requests
 
